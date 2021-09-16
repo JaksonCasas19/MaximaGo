@@ -9,6 +9,12 @@ class CategoriaResource(resources.ModelResource):
     class Meta:
         model = Categoria
 
+class AutorResource(resources.ModelResource):
+    class Meta:
+        model = Autor
+
+
+
 class CategoriaAdmin(ImportExportModelAdmin,admin.ModelAdmin):
     #Añadir barra de busqueda, en lista
     search_fields = ['nombre']
@@ -16,9 +22,10 @@ class CategoriaAdmin(ImportExportModelAdmin,admin.ModelAdmin):
     list_display = ('nombre','estado','fecha_creacion',)
     resource_class = CategoriaResource
 
-class AutorAdmin(admin.ModelAdmin):
+class AutorAdmin(ImportExportModelAdmin,admin.ModelAdmin):
     search_fields = ['nombres']
     list_display = ('nombres','correo','estado','fecha_creacion',)
+    resource_class = AutorResource
 
 admin.site.register(Categoria,CategoriaAdmin)
 admin.site.register(Autor,AutorAdmin)
