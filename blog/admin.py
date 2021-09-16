@@ -2,12 +2,19 @@ from django.contrib import admin
 
 # Register your models here.
 from .models import *
+from import_export import resources
+from import_export.admin import ImportExportModelAdmin
 
-class CategoriaAdmin(admin.ModelAdmin):
+class CategoriaResource(resources.ModelResource):
+    class Meta:
+        model = Categoria
+
+class CategoriaAdmin(ImportExportModelAdmin,admin.ModelAdmin):
     #Añadir barra de busqueda, en lista
     search_fields = ['nombre']
     #Colocar los atributos en el encabezado, pasarlo en tupla
     list_display = ('nombre','estado','fecha_creacion',)
+    resource_class = CategoriaResource
 
 class AutorAdmin(admin.ModelAdmin):
     search_fields = ['nombres']

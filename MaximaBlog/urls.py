@@ -19,3 +19,6 @@ from django.urls import path
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
+
+admin.autodiscover()
+admin.site.enable_nav_sidebar = False
