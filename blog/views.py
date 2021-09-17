@@ -1,9 +1,11 @@
+from blog.models import Post
 from django.shortcuts import render
-
+from .models import Post
 # Create your views here.
 
 def home(request):
-    return render(request,'index.html')
+    posts = Post.objects.filter(estado=True)
+    return render(request,'index.html',{'posts':posts})
 
 def generales(request):
     return render(request,'generales.html')

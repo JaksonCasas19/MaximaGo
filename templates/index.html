@@ -72,24 +72,32 @@
       </div>
     </header>
 
+
+   
     <!-- Main Content -->
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
+          {% if posts %} 
+          {% for post in posts %}
           <div class="post-preview">
             <a href="post.html">
               <h2 class="post-title">
-                Man must explore, and this is exploration at its greatest
+               {{post.titulo}}
               </h2>
               <h3 class="post-subtitle">
-                Problems look mighty small from 150 miles up
+                {{post.descripcion}}
               </h3>
             </a>
             <p class="post-meta">Posted by
-              <a href="#">Start Bootstrap</a>
-              on September 24, 2018</p>
+              <a href="#">{{post.autor}}</a>
+              on {{post.fecha_creacion}}</p>
           </div>
           <hr>
+          {% endfor %}
+        {% else %}
+            <h1>No hay post</h1>
+        {% endif %}
 
           <!-- Pager -->
           <div class="clearfix">
