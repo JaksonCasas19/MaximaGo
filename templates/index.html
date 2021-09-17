@@ -44,10 +44,13 @@
               <a class="nav-link" href="{% url 'blog:generales' %}">Generales</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="post.html">Turismo</a>
+              <a class="nav-link" href="{% url 'blog:turismo' %}">Turismo</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contact.html">Tecnologia</a>
+              <a class="nav-link" href="{% url 'blog:tecnologia' %}">Tecnologia</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'blog:noticia' %}">Noticia</a>
             </li>
           </ul>
         </div>
