@@ -1,6 +1,6 @@
 from blog.models import Post
 from django.shortcuts import render
-from .models import Post
+from .models import Categoria, Post
 # Create your views here.
 
 def home(request):
@@ -11,10 +11,13 @@ def generales(request):
     return render(request,'generales.html')
 
 def turismo(request):
-    return render(request,'turismo.html')
+    posts = Post.objects.filter(estado=True,categoria= Categoria.objects.get(nombre='Turismo'))
+    
+    return render(request,'turismo.html',{'posts':posts})
 
 def tecnologia(request):
-    return render(request,'tecnologia.html')
+    posts = Post.objects.filter(estado=True,categoria= Categoria.objects.get(nombre='Tecnologia'))
+    return render(request,'tecnologia.html',{'posts':posts})
 
 def noticia(request):
     return render(request,'noticia.html')
