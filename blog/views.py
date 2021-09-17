@@ -8,11 +8,11 @@ def home(request):
     return render(request,'index.html',{'posts':posts})
 
 def generales(request):
-    return render(request,'generales.html')
+    posts = Post.objects.filter(estado=True,categoria= Categoria.objects.get(nombre='General'))
+    return render(request,'generales.html',{'posts':posts})
 
 def turismo(request):
     posts = Post.objects.filter(estado=True,categoria= Categoria.objects.get(nombre='Turismo'))
-    
     return render(request,'turismo.html',{'posts':posts})
 
 def tecnologia(request):
@@ -20,4 +20,5 @@ def tecnologia(request):
     return render(request,'tecnologia.html',{'posts':posts})
 
 def noticia(request):
-    return render(request,'noticia.html')
+    posts = Post.objects.filter(estado=True,categoria= Categoria.objects.get(nombre='Noticia'))
+    return render(request,'noticia.html',{'posts':posts})
