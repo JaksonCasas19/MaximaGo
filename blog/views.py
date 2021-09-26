@@ -12,7 +12,7 @@ def detallePost(request,slug):
         slug = slug
     )
     print(post)
-    return render(request,'post.html')
+    return render(request,'post.html',{'detalle_post':post})
 
 def generales(request):
     posts = Post.objects.filter(estado=True,categoria= Categoria.objects.get(nombre='General'))

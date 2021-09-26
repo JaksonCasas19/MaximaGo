@@ -2,12 +2,17 @@
 {% load static %}
 
 {% block titulo %}
-
+{{detalle_post.titulo}}
 {% endblock titulo %}
 
 {% block imagen %}
+{{detalle_post.imagen}}
 {% endblock imagen %}
 
+{% block titulo_principal %}
+{{detalle_post.titulo}}
+{{detalle_post.descripcion}}
+{% endblock titulo_principal %}
 {% block contenido %}
 
 {% endblock contenido %}
