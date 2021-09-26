@@ -8,7 +8,11 @@ def home(request):
     return render(request,'index.html',{'posts':posts})
 
 def detallePost(request,slug):
-    pass
+    post = Post.objects.get(
+        slug = slug
+    )
+    print(post)
+    return render(request,'post.html')
 
 def generales(request):
     posts = Post.objects.filter(estado=True,categoria= Categoria.objects.get(nombre='General'))
