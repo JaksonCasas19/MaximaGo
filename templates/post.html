@@ -16,5 +16,5 @@
 {% endblock titulo_principal %}
 
 {% block contenido %}
-  {{detalle_post.contenido}}
+  {{detalle_post.contenido | safe}}
 {% endblock contenido %}

@@ -73,11 +73,12 @@
     </header>
 
 
-   {% block contenido %}
+  
     <!-- Main Content -->
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
+          {% block contenido %}
           {% if posts %} 
           {% for post in posts %}
           <div class="post-preview">
@@ -99,6 +100,8 @@
             <h1>No hay post</h1>
         {% endif %}
 
+        {% endblock contenido %}
+
           <!-- Pager -->
           <div class="clearfix">
             <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
@@ -108,7 +111,7 @@
     </div>
 
     <hr>
-  {% endblock contenido %}
+  
     <!-- Footer -->
     <footer>
       <div class="container">
