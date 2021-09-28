@@ -10,11 +10,12 @@ def home(request):
     posts = Post.objects.filter(estado=True)
 
     #Verificar si el texto pasado en el buscador existe
+    #__icontains -- No existe la mayuscula y minusculas
     if queryset:
         posts = Post.objects.filter(
-            Q(titulo = queryset) |
-            Q(descripcion = queryset)
-        ).distinct
+            Q(titulo__icontains = queryset) |
+            Q(descripcion__icontains = queryset)
+        ).distinct()
     
     return render(request,'index.html',{'posts':posts})
 
