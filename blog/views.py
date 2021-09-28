@@ -27,8 +27,19 @@ def detallePost(request,slug):
     return render(request,'post.html',{'detalle_post':post})
 
 def generales(request):
+    queryset = request.GET.get("buscar")
     posts = Post.objects.filter(estado=True,categoria= Categoria.objects.get(nombre__iexact='General')) #Nombre__iexat Mayus y Minus
+    
+    if queryset:
+        posts = Post.objects.filter(
+            Q(titulo__icontains = queryset) |
+            Q(descripcion__icontains = queryset),
+            estado = True,
+            categoria = Categoria.objects.get(nombre__iexact='General')
+        ).distinct()
+    
     return render(request,'generales.html',{'posts':posts})
+
 
 def turismo(request):
     posts = Post.objects.filter(estado=True,categoria= Categoria.objects.get(nombre='Turismo'))
