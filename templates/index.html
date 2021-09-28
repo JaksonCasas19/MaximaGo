@@ -74,7 +74,7 @@
                       <form action="" method="GET">
                         <div id="custon-search-input">
                             <div class="input-group col-md-12">
-                              <input type="text" class="form-control" placeholder="Buscar..." name="buscar">
+                              <input type="text" class="form-control" placeholder="Buscar..." name="buscar" value="{{request.GET.buscar}}"><!--Mantener capturado el valor en el buscador-->
                               <span class="input-group-list">
                                 <i class="icon icon-search"></i>
                                 <button type="submit" class="boton btn-success">Buscar</button>
