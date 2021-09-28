@@ -15,7 +15,7 @@ def detallePost(request,slug):
     return render(request,'post.html',{'detalle_post':post})
 
 def generales(request):
-    posts = Post.objects.filter(estado=True,categoria= Categoria.objects.get(nombre='General'))
+    posts = Post.objects.filter(estado=True,categoria= Categoria.objects.get(nombre__iexact='General'))
     return render(request,'generales.html',{'posts':posts})
 
 def turismo(request):
