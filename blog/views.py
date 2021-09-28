@@ -1,7 +1,9 @@
+from django.core import paginator
 from blog.models import Post
 from django.shortcuts import render
 from .models import Categoria, Post
 from django.db.models import Q
+from django.core.paginator import Paginator
 # Create your views here.
 
 def home(request):
@@ -17,6 +19,11 @@ def home(request):
             Q(descripcion__icontains = queryset)
         ).distinct()
     
+    #Paginacion
+    paginator = Paginator(posts,2)
+    page = request.GET.get('page')
+    posts = paginator.get_page(page)
+
     return render(request,'index.html',{'posts':posts})
 
 def detallePost(request,slug):
